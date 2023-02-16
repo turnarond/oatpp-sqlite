@@ -61,7 +61,7 @@ private:
 
   QueryParameter parseQueryParameter(const oatpp::String& paramName);
 
-private:
+public:
 
   void bindParams(sqlite3_stmt* stmt,
                   const StringTemplate& queryTemplate,
@@ -69,7 +69,7 @@ private:
                   const std::shared_ptr<const data::mapping::TypeResolver>& typeResolver);
 
   std::shared_ptr<orm::QueryResult> exec(const oatpp::String& statement,
-                                         const provider::ResourceHandle<orm::Connection>& connection = nullptr);
+                                         const provider::ResourceHandle<orm::Connection>& connection = nullptr) override;
 
   oatpp::String getSchemaVersionTableName(const oatpp::String& suffix);
   std::shared_ptr<orm::QueryResult> updateSchemaVersion(v_int64 newVersion,
